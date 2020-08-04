@@ -1,6 +1,6 @@
 ---
 title: StatefulSets (Pods with Persistent Volumes)
-last_reviewed_on: 2020-04-27
+last_reviewed_on: 2020-08-04
 review_in: 3 months
 ---
 
@@ -67,7 +67,7 @@ spec:
   template:
     metadata:
       labels:
-        app: nginx # This should be the same of selector:matchLabels:app
+        app: nginx # This should be the same as selector:matchLabels:app
     spec:
       containers: # Container images with their corresponding settings
       - name: nginx
