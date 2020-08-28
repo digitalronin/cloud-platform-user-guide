@@ -199,9 +199,9 @@ deploying changes to the application:</p>
 <li><a href="https://www.docker.com">Docker</a> is installed and configured.</li>
 <li>Kubectl is installed and configured (<code>brew install kubectl</code> on a Mac with <a href="https://brew.sh">Homebrew</a> installed, or <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">follow these instructions</a>)</li>
 <li>AWS CLI is installed (<code>brew install awscli</code> on a Mac with <a href="https://brew.sh">Homebrew</a> installed)</li>
-<li>You have installed the <a href="/documentation/getting-started/cloud-platform-cli.html">Cloud Platform CLI</a></li>
+<li>You have installed the <a href="../getting-started/cloud-platform-cli.html">Cloud Platform CLI</a></li>
 </ul>
-<h2 id="step-1-create-your-namespace">Step 1 - Create your namespace</h2><p>Follow <a href="/documentation/getting-started/env-create.html#creating-a-cloud-platform-environment">this guide</a> to create a namespace on the Cloud Platform
+<h2 id="step-1-create-your-namespace">Step 1 - Create your namespace</h2><p>Follow <a href="../getting-started/env-create.html#creating-a-cloud-platform-environment">this guide</a> to create a namespace on the Cloud Platform
 (you don&rsquo;t need to do any of the &ldquo;Next steps&rdquo; from that guide).</p>
 <h2 id="step-2-deploy-the-quot-hello-world-quot-application">Step 2 - Deploy the &ldquo;Hello, World&rdquo; application</h2>
 <ul>
@@ -240,7 +240,7 @@ name.</p>
 <blockquote>
 <p>If you want to use a domain name which doesn&rsquo;t match the default wildcard
 domain, you will need to make some more changes. More information on this is
-available <a href="/documentation/other-topics/custom-domain-cert.html">here</a>.</p>
+available <a href="../other-topics/custom-domain-cert.html">here</a>.</p>
 </blockquote>
 <p>Once you have saved your changes to the <code>kubectl_deploy/ingress.yaml</code> file, you
 can deploy the application using this command:</p>
@@ -333,7 +333,7 @@ Docker Hub - a public docker image repository.</p>
 <p>Most projects hosted on the Cloud Platform use Amazon ECR - a service providing
 private docker image repositories, only accessible by a single team. So, we&rsquo;re
 going to use an ECR to store our updated docker image.</p>
-<p>Please follow <a href="/documentation/getting-started/ecr-setup.html#creating-an-ecr-repository">this guide</a> to create an ECR for your namespace.</p>
+<p>Please follow <a href="../getting-started/ecr-setup.html#creating-an-ecr-repository">this guide</a> to create an ECR for your namespace.</p>
 <h2 id="step-4-change-the-application-code">Step 4 - Change the application code</h2><p>Edit the <code>app.rb</code> file, and change &ldquo;Hello, World!&rdquo; to something else.</p>
 <h3 id="build-the-docker-image">Build the docker image</h3><p>Now that we have updated the source code, we can build a new docker image
 (locally).</p>
@@ -343,7 +343,7 @@ going to use an ECR to store our updated docker image.</p>
 <p>You can replace <code>myimage</code> with any name you like for your new docker image. Don&rsquo;t forget the <code>.</code> at the end of the command.</p>
 </blockquote>
 <h3 id="authenticating-to-your-docker-image-repository">Authenticating to your docker image repository</h3><p>Before you can push the image to your ECR, you need to authenticate to it.</p>
-<p>To authenticate to your ECR, you will need the <code>access_key_id</code> and <code>secret_access_key</code> which were created for you when you created your ECR. To retrieve these, see the <a href="/documentation/getting-started/ecr-setup.html#accessing-the-credentials">this section</a> of this guide.</p>
+<p>To authenticate to your ECR, you will need the <code>access_key_id</code> and <code>secret_access_key</code> which were created for you when you created your ECR. To retrieve these, see the <a href="../getting-started/ecr-setup.html#accessing-the-credentials">this section</a> of this guide.</p>
 <p><em>tl;dr</em> use this command:</p>
 <div class="highlight"><pre class="highlight plaintext"><code>  kubectl -n [namespace_name] get secret [name of your secret] -o yaml
 </code></pre></div><p>Don&rsquo;t forget to base64 decode the <code>access_key_id</code> and <code>secret_access_key</code> values before using them.</p>

@@ -27,7 +27,8 @@ build:
 		-v $$(pwd)/docs:/app/docs \
 		-p 4567:4567 \
 		$(PUBLISHING_IMAGE) \
-		bundle exec middleman build --build-dir docs 2>&1 | grep -v 'warning: URI.*escape is obsolete'
+		bundle exec middleman build --relative-links --build-dir docs 2>&1 | grep -v 'warning: URI.*escape is obsolete'
+	touch docs/.nojekyll
 
 # Check for broken links (assumes `make build` has been run)
 .PHONY: htmlproofer

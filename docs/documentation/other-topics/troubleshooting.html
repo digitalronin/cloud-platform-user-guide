@@ -193,7 +193,7 @@ Error from server (BadRequest): a container name must be specified for pod hello
 == Sinatra (v2.0.7) has taken the stage on 4567 for development with backup from WEBrick
 [2019-11-26 14:12:16] INFO  WEBrick::HTTPServer#start: pid=1 port=4567
 </code></pre></div><p>You can tail the logs by appending <code>--follow</code> to that command.</p>
-<p>Logs are also available via Kibana, as described <a href="/documentation/logging-an-app/access-logs.html#accessing-application-log-data">here</a>.</p>
+<p>Logs are also available via Kibana, as described <a href="../logging-an-app/access-logs.html#accessing-application-log-data">here</a>.</p>
 <h2 id="launching-a-shell">Launching a shell</h2><p>If your container has a shell installed (e.g. <code>bash</code>, <code>zsh</code>, or <code>sh</code>), you can exec onto the running container like this</p>
 <div class="highlight"><pre class="highlight plaintext"><code>$ kubectl -n dstest exec -it helloworld-rubyapp-8795b9c56-58fbc -c rubyapp sh
 /app $
@@ -290,10 +290,10 @@ cannot list resource "pods" in API group "" in the namespace "&lt;namespace&gt;"
 <h4 id="solutions">Solutions</h4>
 <ul>
 <li>First confirm that you&rsquo;re a member of the GitHub team assigned in your <a href="https://github.com/ministryofjustice/cloud-platform-environments/blob/main/namespaces/live-1.cloud-platform.service.justice.gov.uk/hmpps-book-secure-move-api-production/01-rbac.yaml#L8">rbac.yaml</a> file, which is located in the <a href="https://github.com/ministryofjustice/cloud-platform-environments/tree/main/namespaces">cloud-platform-environments</a> repository.</li>
-<li>If you&rsquo;re not a member, get someone in the team to <a href="https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/adding-organization-members-to-a-team">add you to it</a> (please note, the Cloud Platform team cannot do this for you), and then <a href="/documentation/getting-started/kubectl-config.html#authentication">re-authenticate</a> to the cluster.</li>
-<li>If you&rsquo;re already in the right github teams, try to <a href="/documentation/getting-started/kubectl-config.html#authentication">re-authenticate</a> to the cluster.</li>
-<li>If that doesn&rsquo;t work, <a href="/documentation/other-topics/check-id-token.html">check that your github team memberships are recorded in your id-token</a>.</li>
-<li><p>If they aren&rsquo;t, <a href="/documentation/getting-started/kubectl-config.html#authentication">re-authenticate</a> to the cluster <strong>using an icognito/private browsing window</strong>.</p>
+<li>If you&rsquo;re not a member, get someone in the team to <a href="https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/adding-organization-members-to-a-team">add you to it</a> (please note, the Cloud Platform team cannot do this for you), and then <a href="../getting-started/kubectl-config.html#authentication">re-authenticate</a> to the cluster.</li>
+<li>If you&rsquo;re already in the right github teams, try to <a href="../getting-started/kubectl-config.html#authentication">re-authenticate</a> to the cluster.</li>
+<li>If that doesn&rsquo;t work, <a href="check-id-token.html">check that your github team memberships are recorded in your id-token</a>.</li>
+<li><p>If they aren&rsquo;t, <a href="../getting-started/kubectl-config.html#authentication">re-authenticate</a> to the cluster <strong>using an icognito/private browsing window</strong>.</p>
 <p>Sometimes browser caching seems to cause problems with the authentication process, and using an icognito browser window usually resolves the problem.</p></li>
 </ul>
 

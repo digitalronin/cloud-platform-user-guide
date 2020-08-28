@@ -147,9 +147,9 @@
 
 <ul>
 <li>You have a basic understanding of what <a href="https://kubernetes.io/">Kubernetes</a> is.</li>
-<li>You have <a href="/documentation/getting-started/env-create.html#creating-a-cloud-platform-environment">created an environment for your application</a></li>
+<li>You have <a href="../getting-started/env-create.html#creating-a-cloud-platform-environment">created an environment for your application</a></li>
 <li>You have installed <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">Kubectl</a> on your local machine.</li>
-<li>You have <a href="/documentation/getting-started/kubectl-config.html#authentication">authenticated</a> to the cloud-platform-live-1 cluster.</li>
+<li>You have <a href="../getting-started/kubectl-config.html#authentication">authenticated</a> to the cloud-platform-live-1 cluster.</li>
 </ul>
 <h3 id="deploy-the-app">Deploy the app</h3><p>The multi-container demo application we&rsquo;re going to use is a very simple Ruby application with an on-cluster Postgresql database.</p>
 
@@ -165,7 +165,7 @@ $ cd cloud-platform-multi-container-demo-app
 <h4 id="browse-the-cluster">Browse the cluster</h4><p>Let&rsquo;s make use of the command line tool <code>kubectl</code> to browse around the cluster to see what it looks like before we deploy our application:</p>
 <div class="highlight"><pre class="highlight plaintext"><code>$ kubectl get pods --namespace &lt;namespace-name&gt;
 </code></pre></div><p><em>The <code>&lt;namespace-name&gt;</code> here is the environment you created, listed in the requirements section at the beginning of the document.</em></p>
-<p>If you receive the below error message then you&rsquo;ve either not typed in your namespace correctly or you don&rsquo;t have permission to perform a <code>get pods</code> command. Either way, you&rsquo;ll need to go back and review the <a href="/documentation/getting-started/env-create.html#creating-a-cloud-platform-environment">Creating an Environment</a> document previously mentioned.</p>
+<p>If you receive the below error message then you&rsquo;ve either not typed in your namespace correctly or you don&rsquo;t have permission to perform a <code>get pods</code> command. Either way, you&rsquo;ll need to go back and review the <a href="../getting-started/env-create.html#creating-a-cloud-platform-environment">Creating an Environment</a> document previously mentioned.</p>
 <div class="highlight"><pre class="highlight plaintext"><code>$ Error from server (Forbidden): pods is forbidden: User "test-user" cannot list pods in the namespace "demo"
 </code></pre></div><h4 id="using-helm">Using Helm</h4><p>Helm allows you to manage application deployment to Kubernetes using Charts. You can read about of some of the many features of <a href="https://helm.sh/docs/topics/charts/">Helm Charts</a>. 
 We&rsquo;ve chosen to use Helm as the default way to deploy applications to the Cloud Platform as it provides useful tooling as an interface to the YAML files that Kubernetes uses to run.</p>
@@ -223,7 +223,7 @@ worker-874774c95-q4frp                  1/1     Running                      0  
 <p>Let&rsquo;s check your host has a URL by running:</p>
 <div class="highlight"><pre class="highlight plaintext"><code>$ kubectl get ingress --namespace &lt;namespace-name&gt;
 </code></pre></div><p>This will return the URL of your given app. Open it using your favourite browser.</p>
-<p>You can also secure the application with http basic authentication. For more information on how to setup, see <a href="/documentation/deploying-an-app/helloworld-app-deploy.html#add-http-basic-authentication">this topic</a>.</p>
+<p>You can also secure the application with http basic authentication. For more information on how to setup, see <a href="helloworld-app-deploy.html#add-http-basic-authentication">this topic</a>.</p>
 <p>You should be met with an Demo app with the title, <em>&lsquo;Hello from Rails&rsquo;</em> with a cat image. If you refresh the page, you should see a different cat picture (the URL of which the rails-app fetches from the content-api component).</p>
 <h4 id="view-the-logs">View the logs</h4><p>Each pod will generate logs that can be viewed via the API. Let&rsquo;s have a browse of our application logs.</p>
 <p>First grab the pod name:</p>

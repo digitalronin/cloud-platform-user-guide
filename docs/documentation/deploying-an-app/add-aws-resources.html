@@ -144,7 +144,7 @@ variable "cluster_state_bucket" {}
 </code></pre></div><p>The main README file of each module repository will list all the available configuration options that can be passed to the module.</p>
 <h3 id="outputs">Outputs</h3><p>Each module will have its own outputs. These expose useful information, such as endpoints, credentials etc. The module examples all use a common approach: they employ the <code>kubernetes_secret</code> terraform resource to push the outputs straight into your namespace in the form of a <code>Secret</code> which you could then extract information from or directly reference in <code>Pods</code>.</p>
 <p>This is currently the only supported way of accessing terraform outputs.</p>
-<p>See <a href="/documentation/deploying-an-app/add-secrets-to-deployment.html#using-the-secret-in-your-applications">this article</a> for instructions on how to use these secrets in your applications.</p>
+<p>See <a href="add-secrets-to-deployment.html#using-the-secret-in-your-applications">this article</a> for instructions on how to use these secrets in your applications.</p>
 <h3 id="versioning">Versioning</h3><p>All modules are versioned. This allows us to implement changes without breaking existing resources. To use a specific version of a module you need to define it in the <code>source</code> attribute by specifying the <code>ref</code> attribute in the query string of the source URL:</p>
 <div class="highlight"><pre class="highlight plaintext"><code>module "my_module" {
   source = "https://github.com/ministryofjustice/cloud-platform-terraform-ecr-credentials?ref=1.0"

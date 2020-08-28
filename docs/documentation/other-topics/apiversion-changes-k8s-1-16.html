@@ -149,7 +149,7 @@ before we upgrade the cluster to kubernetes version 1.16.</p>
 </ul>
 <h3 id="resources-deployed-using-helm-charts">Resources deployed using helm charts</h3><p>If you have used helm version &lt; 2.16.3, then the generated manifests will use the deprecated APIs. 
 It is therefore <strong>mandatory</strong> to update the manifest with replacement APIs. 
-We also suggest upgrading your helm version to &gt; 2.16.3, ideally to <a href="/documentation/deploying-an-app/app-deploy-helm.html#migrate-from-helm-v2-to-helm-v3">Helm 3</a> so the helm
+We also suggest upgrading your helm version to &gt; 2.16.3, ideally to <a href="../deploying-an-app/app-deploy-helm.html#migrate-from-helm-v2-to-helm-v3">Helm 3</a> so the helm
   manifests are not generated with deprecated APIs.</p>
 <p>More detailed changes to kubernetes resources are explained in this <a href="https://kubernetes.io/blog/2019/07/18/api-deprecations-in-1-16/">kubernetes blog</a> and 
 the <a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.16.md#deprecations-and-removals">1.16 CHANGELOG</a></p>
@@ -256,7 +256,7 @@ helloworld/independent-bobcat-helloworld             cptest   Deployment   apps/
 </code></pre></div><p>Update the template manifests in your helm chart repo, making the required changes.</p>
 <p>You can test your source code directly using pluto by running:</p>
 <div class="highlight"><pre class="highlight plaintext"><code>pluto detect-files -d &lt;DIRECTORY YOU WANT TO SCAN&gt;
-</code></pre></div><p>Upgrade your local helm version to &gt;v2.16.3, Ideally to <a href="/documentation/deploying-an-app/app-deploy-helm.html#migrate-from-helm-v2-to-helm-v3">Helm 3</a>. Check the user guide for more instructions on <a href="/documentation/deploying-an-app/app-deploy-helm.html#migrate-from-helm-v2-to-helm-v3">migrating to Helm 3</a></p>
+</code></pre></div><p>Upgrade your local helm version to &gt;v2.16.3, Ideally to <a href="../deploying-an-app/app-deploy-helm.html#migrate-from-helm-v2-to-helm-v3">Helm 3</a>. Check the user guide for more instructions on <a href="../deploying-an-app/app-deploy-helm.html#migrate-from-helm-v2-to-helm-v3">migrating to Helm 3</a></p>
 <p>If for any reason you cant upgrade to Helm 3:</p>
 
 <ul>
