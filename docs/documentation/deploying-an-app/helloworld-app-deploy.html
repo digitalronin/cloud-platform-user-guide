@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en" class="govuk-template no-js">
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+      <meta name="robots" content="noindex">
+
+    <title>Deploying a 'Hello World' application to the Cloud Platform - Cloud Platform User Guide</title>
+
+    <link href="/stylesheets/manifest.css" rel="stylesheet" />
+
+    <link rel="canonical" href="https://user-guide.cloud-platform.service.justice.gov.uk/documentation/deploying-an-app/helloworld-app-deploy.html">
+
+
+      <meta property="og:image" content="https://user-guide.cloud-platform.service.justice.gov.uk/images/govuk-large.png" />
+      <meta property="og:site_name" content="Cloud Platform User Guide" />
+      <meta property="og:title" content="Deploying a 'Hello World' application to the Cloud Platform" />
+      <meta property="og:type" content="object" />
+      <meta property="og:url" content="https://user-guide.cloud-platform.service.justice.gov.uk/documentation/deploying-an-app/helloworld-app-deploy.html" />
+      <meta property="twitter:card" content="summary" />
+      <meta property="twitter:domain" content="user-guide.cloud-platform.service.justice.gov.uk" />
+      <meta property="twitter:image" content="https://user-guide.cloud-platform.service.justice.gov.uk/images/govuk-large.png" />
+      <meta property="twitter:title" content="Deploying a 'Hello World' application to the Cloud Platform - Cloud Platform User Guide" />
+      <meta property="twitter:url" content="https://user-guide.cloud-platform.service.justice.gov.uk/documentation/deploying-an-app/helloworld-app-deploy.html" />
+
+    
+  </head>
+
+  <body class="govuk-template__body">
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+    <div class="app-pane">
+      <div class="app-pane__header toc-open-disabled">
+        <a href="#content" class="govuk-skip-link">Skip to main content</a>
+
+        <header class="govuk-header app-header" role="banner" data-module="govuk-header">
+  <div class="govuk-header__container govuk-header__container--full-width">
+    <div class="govuk-header__logo">
+      <a href="/" class="govuk-header__link govuk-header__link--homepage">
+        <span class="govuk-header__product-name">
+          Cloud Platform User Guide
+        </span>
+      </a>
+    </div>
+    <div class="govuk-header__content">
+      <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+      <nav>
+        <ul id="navigation" class="govuk-header__navigation govuk-header__navigation--end" aria-label="Top Level Navigation">
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="mailto:platforms+user-guide@digital.justice.gov.uk?subject=User+guide+feedback">Feedback / Report a problem</a>
+            </li>
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="/">Documentation</a>
+            </li>
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="https://github.com/ministryofjustice/cloud-platform-user-guide">GitHub</a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+      </div>
+
+        <div id="toc-heading" class="toc-show fixedsticky">
+          <a href="#toc" class="toc-show__label js-toc-show" aria-controls="toc">
+            Table of contents <span class="toc-show__icon"></span>
+          </a>
+        </div>
+
+      <div class="app-pane__body" data-module="in-page-navigation">
+          <div class="app-pane__toc">
+            <div class="toc" data-module="table-of-contents">
+              <div class="search" data-module="search">
+  <form action="https://www.google.co.uk/search" method="get" role="search">
+    <input type="hidden" name="as_sitesearch" value="https://user-guide.cloud-platform.service.justice.gov.uk"/>
+    <label class="govuk-label search__label" for="search">
+      Search (via Google)
+    </label>
+    <input class="govuk-input govuk-!-margin-bottom-4" id="search" name="q" type="text" aria-controls="search-results" placeholder="Search">
+  </form>
+  <div id="search-results" class="search-results" aria-hidden="true" role="dialog" aria-labelledby="search-results-title">
+    <div class="search-results__inner">
+      <button class="search-results__close">Close<span class="search-results__close-label"> search results</span></button>
+      <h2 id="search-results-title" class="search-results__title" aria-live="polite">Results</h2>
+      <div class="search-results__content"></div>
+    </div>
+  </div>
+</div>
+
+              <a href="#" class="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></a>
+              <nav id="toc" class="js-toc-list toc__list" aria-labelledby="toc-heading">
+                      <ul>
+  <li>
+    <a href="#deploying-a-39-hello-world-39-application-to-the-cloud-platform"><span>Deploying a ‘Hello World’ application to the Cloud Platform</span></a>
+    <ul>
+      <li>
+        <a href="#overview"><span>Overview</span></a>
+      </li>
+      <li>
+        <a href="#prerequisites"><span>Prerequisites</span></a>
+      </li>
+      <li>
+        <a href="#step-1-create-your-namespace"><span>Step 1 - Create your namespace</span></a>
+      </li>
+      <li>
+        <a href="#step-2-deploy-the-quot-hello-world-quot-application"><span>Step 2 - Deploy the “Hello, World” application</span></a>
+      </li>
+      <li>
+        <a href="#the-kubernetes-yaml-files"><span>The kubernetes YAML files</span></a>
+        <ul>
+          <li>
+            <a href="#ingress-yaml"><span>ingress.yaml</span></a>
+          </li>
+          <li>
+            <a href="#service-yaml"><span>service.yaml</span></a>
+          </li>
+          <li>
+            <a href="#deployment-yaml"><span>deployment.yaml</span></a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#updating-the-application"><span>Updating the application</span></a>
+      </li>
+      <li>
+        <a href="#step-3-create-an-amazon-ecr"><span>Step 3 - Create an Amazon ECR</span></a>
+      </li>
+      <li>
+        <a href="#step-4-change-the-application-code"><span>Step 4 - Change the application code</span></a>
+        <ul>
+          <li>
+            <a href="#build-the-docker-image"><span>Build the docker image</span></a>
+          </li>
+          <li>
+            <a href="#authenticating-to-your-docker-image-repository"><span>Authenticating to your docker image repository</span></a>
+          </li>
+          <li>
+            <a href="#tag-the-image-and-push-it-to-your-ecr"><span>Tag the image and push it to your ECR</span></a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#step-5-deploy-the-application"><span>Step 5 - Deploy the application</span></a>
+      </li>
+      <li>
+        <a href="#add-http-basic-authentication"><span>Add HTTP Basic Authentication</span></a>
+        <ul>
+          <li>
+            <a href="#create-the-username-and-password"><span>Create the username and password</span></a>
+          </li>
+          <li>
+            <a href="#create-the-kubernetes-secret"><span>Create the kubernetes secret</span></a>
+          </li>
+          <li>
+            <a href="#configure-the-ingress"><span>Configure the Ingress</span></a>
+          </li>
+          <li>
+            <a href="#apply-the-changes"><span>Apply the changes</span></a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+              </nav>
+            </div>
+          </div>
+
+        <div class="app-pane__content toc-open-disabled">
+          <main id="content" class="technical-documentation" data-module="anchored-headings">
+              <h1 id="deploying-a-39-hello-world-39-application-to-the-cloud-platform">Deploying a &lsquo;Hello World&rsquo; application to the Cloud Platform</h1><p><a href="/images/k8s-cluster-application-deployment-process.png" target="_blank" rel="noopener noreferrer"><img src="/images/k8s-cluster-application-deployment-process.png" alt="Deployment Process Diagram" /></a></p>
+<h2 id="overview">Overview</h2><p>The aim of this guide is to walkthrough the process of deploying an application into the Cloud Platform.</p>
+<p>This guide uses a pre-configured <a href="https://github.com/ministryofjustice/cloud-platform-helloworld-ruby-app">&ldquo;Hello World&rdquo; application</a> as an example of how to deploy your own. This application merely returns a static HTML response, and has no dependencies. Later examples will use more representative applications.</p>
+<p>We will walk through these steps:</p>
+
+<ul>
+<li>Create a namespace (aka an &ldquo;environment&rdquo;) on the Cloud Platform</li>
+<li>Deploy an instance of a pre-configured &ldquo;Hello, World&rdquo; application into your namespace</li>
+</ul>
+<p>Then we will demonstrate a typical software development cycle of making and
+deploying changes to the application:</p>
+
+<ul>
+<li>Create and authenticate to an <a href="https://aws.amazon.com/ecr/">ECR</a></li>
+<li>Make changes to the source code of the application</li>
+<li>Build a new docker image from the demo application</li>
+<li>Tag the image and push it to your ECR</li>
+<li>Update your kubernetes files to deploy the updated application</li>
+</ul>
+<p>The process of building an image and pushing it to an ECR will normally be carried out by a build pipeline. For this initial walkthrough, we will go through these steps manually. Later we will go through an example of setting up a <a href="https://circleci.com">CircleCI</a> job to do this automatically. The steps are similar if you&rsquo;re using other CI/CD tools such as <a href="https://travis-ci.org">TravisCI</a>.</p>
+<h2 id="prerequisites">Prerequisites</h2><p>This guide assumes the following:</p>
+
+<ul>
+<li><a href="https://www.docker.com">Docker</a> is installed and configured.</li>
+<li>Kubectl is installed and configured (<code>brew install kubectl</code> on a Mac with <a href="https://brew.sh">Homebrew</a> installed, or <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">follow these instructions</a>)</li>
+<li>AWS CLI is installed (<code>brew install awscli</code> on a Mac with <a href="https://brew.sh">Homebrew</a> installed)</li>
+<li>You have installed the <a href="/documentation/getting-started/cloud-platform-cli.html">Cloud Platform CLI</a></li>
+</ul>
+<h2 id="step-1-create-your-namespace">Step 1 - Create your namespace</h2><p>Follow <a href="/documentation/getting-started/env-create.html#creating-a-cloud-platform-environment">this guide</a> to create a namespace on the Cloud Platform
+(you don&rsquo;t need to do any of the &ldquo;Next steps&rdquo; from that guide).</p>
+<h2 id="step-2-deploy-the-quot-hello-world-quot-application">Step 2 - Deploy the &ldquo;Hello, World&rdquo; application</h2>
+<ul>
+<li>Clone the <a href="https://github.com/ministryofjustice/cloud-platform-helloworld-ruby-app">demo application</a></li>
+</ul>
+<div class="highlight"><pre class="highlight shell"><code>git clone https://github.com/ministryofjustice/cloud-platform-helloworld-ruby-app
+<span class="nb">cd </span>cloud-platform-helloworld-ruby-app
+</code></pre></div><p>The application has a <code>kubectl_deploy</code> folder containing YAML files which
+define an instance of the application for kubernetes.</p>
+<p>Before we can deploy the application, we need to make some changes to run it in
+your new namespace.</p>
+<p>Edit your local copy of the <code>kubectl_deploy/ingress.yaml</code> file, and make the
+following changes:</p>
+
+<ul>
+<li>Change the <code>kubernetes.io/ingress.class</code> annotation to the name of your namespace</li>
+</ul>
+<p>This tells kubernetes that we want the ingress-controller belonging to your
+namespace to handle traffic to your application. The ingress controller is
+created by the <code>resources/ingress.tf</code> file which formed part of the PR you
+raised to create your namespace.</p>
+
+<ul>
+<li>Change the hostname for the application</li>
+</ul>
+<p>The current hostname for the demo application is:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>helloworld-rubyapp.apps.live-1.cloud-platform.service.justice.gov.uk
+</code></pre></div><p>We need a unique domain name for this instance of the application. There is a
+&ldquo;wildcard&rdquo; domain and SSL certificate available on the Cloud Platform, so we
+will stick to a domain name which matches:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>*.apps.live-1.cloud-platform.service.justice.gov.uk
+</code></pre></div><p>Choose a domain name for your application and replace the two instances of
+<code>helloworld-rubyapp</code> in the <code>kubectl_deploy/ingress.yaml</code> file with your chosen
+name.</p>
+
+<blockquote>
+<p>If you want to use a domain name which doesn&rsquo;t match the default wildcard
+domain, you will need to make some more changes. More information on this is
+available <a href="/documentation/other-topics/custom-domain-cert.html">here</a>.</p>
+</blockquote>
+<p>Once you have saved your changes to the <code>kubectl_deploy/ingress.yaml</code> file, you
+can deploy the application using this command:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>kubectl -n [namespace name] apply -f kubectl_deploy
+</code></pre></div><p>This assumes that your current working directory is the root of your copy of
+the helloworld application repository.</p>
+<p>You can think of this command as meaning:</p>
+<p>&ldquo;Hey, kubernetes. Please apply all the YAML files in the <code>kubectl_deploy</code>
+directory to the namespace called <code>my-namespace</code> (or whatever you called it).&rdquo;</p>
+<p>A few seconds later, you should be able to visit:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>https://[your domain name].apps.live-1.cloud-platform.service.justice.gov.uk
+</code></pre></div><p>&hellip;in your web browser, and see the &ldquo;Hello, World!&rdquo; message.</p>
+<h2 id="the-kubernetes-yaml-files">The kubernetes YAML files</h2><p>This is how the YAML files link together:</p>
+
+<blockquote>
+<p>You can find more deployment config info <a href="https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment/">in the kubernetes developer documentation</a>.</p>
+</blockquote>
+<h3 id="ingress-yaml"><code>ingress.yaml</code></h3><div class="highlight"><pre class="highlight plaintext"><code>apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: helloworld-rubyapp-ingress
+  annotations:
+    kubernetes.io/ingress.class: mynamespace
+spec:
+  tls:
+  - hosts:
+    - helloworld-rubyapp.apps.live-1.cloud-platform.service.justice.gov.uk
+  rules:
+  - host: helloworld-rubyapp.apps.live-1.cloud-platform.service.justice.gov.uk
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: rubyapp-service
+          servicePort: 4567
+</code></pre></div><p>This tells the cluster that our ingress-controller (found by matching the
+ingress class annotation to the name in the <code>resources/ingress.tf</code> file) should
+accept web traffic to the hostname we defined, and should route that traffic to
+port 4567 of the &ldquo;service&rdquo; called <code>rubyapp-service</code>.</p>
+<h3 id="service-yaml">service.yaml</h3><div class="highlight"><pre class="highlight plaintext"><code>apiVersion: v1
+kind: Service
+metadata:
+  name: rubyapp-service
+  labels:
+    app: rubyapp-service
+spec:
+  ports:
+  - port: 4567
+    name: https
+    targetPort: 4567
+  selector:
+    app: helloworld-rubyapp
+</code></pre></div><p>This defines the service called <code>rubyapp-service</code> which listens on port 4567
+and forwards web traffic to port 4567 of any pods whose <code>app</code> label is
+<code>helloworld-rubyapp</code>.</p>
+<h3 id="deployment-yaml">deployment.yaml</h3><div class="highlight"><pre class="highlight plaintext"><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-rubyapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloworld-rubyapp
+  template:
+    metadata:
+      labels:
+        app: helloworld-rubyapp
+    spec:
+      containers:
+      - name: rubyapp
+        image: ministryofjustice/cloud-platform-helloworld-ruby:1.1
+        ports:
+        - containerPort: 4567
+</code></pre></div><p>This creates a single instance (<code>replicas: 1</code>) of a docker container based on
+the docker image <code>ministryofjustice/cloud-platform-helloworld-ruby:1.1</code> (pulled
+from https://hub.docker.com, since no other source is mentioned), which listens
+on port 4567, and has the <code>app</code> label <code>helloworld-rubyapp</code>.</p>
+<h2 id="updating-the-application">Updating the application</h2><p>To update our application, we need to:</p>
+
+<ul>
+<li>Change the application source code</li>
+<li>Create a new docker image from our updated code</li>
+<li>Push the image to a repository that kubernetes can access</li>
+<li>Update our <code>deployment.yaml</code> file with the new image details</li>
+<li>Apply the updated yaml file to kubernetes</li>
+</ul>
+<h2 id="step-3-create-an-amazon-ecr">Step 3 - Create an Amazon ECR</h2><p>Our initial deployment of the Hello World application pulls a docker image from
+Docker Hub - a public docker image repository.</p>
+<p>Most projects hosted on the Cloud Platform use Amazon ECR - a service providing
+private docker image repositories, only accessible by a single team. So, we&rsquo;re
+going to use an ECR to store our updated docker image.</p>
+<p>Please follow <a href="/documentation/getting-started/ecr-setup.html#creating-an-ecr-repository">this guide</a> to create an ECR for your namespace.</p>
+<h2 id="step-4-change-the-application-code">Step 4 - Change the application code</h2><p>Edit the <code>app.rb</code> file, and change &ldquo;Hello, World!&rdquo; to something else.</p>
+<h3 id="build-the-docker-image">Build the docker image</h3><p>Now that we have updated the source code, we can build a new docker image
+(locally).</p>
+<div class="highlight"><pre class="highlight shell"><code>docker build <span class="nt">-t</span> myimage <span class="nb">.</span>
+</code></pre></div>
+<blockquote>
+<p>You can replace <code>myimage</code> with any name you like for your new docker image. Don&rsquo;t forget the <code>.</code> at the end of the command.</p>
+</blockquote>
+<h3 id="authenticating-to-your-docker-image-repository">Authenticating to your docker image repository</h3><p>Before you can push the image to your ECR, you need to authenticate to it.</p>
+<p>To authenticate to your ECR, you will need the <code>access_key_id</code> and <code>secret_access_key</code> which were created for you when you created your ECR. To retrieve these, see the <a href="/documentation/getting-started/ecr-setup.html#accessing-the-credentials">this section</a> of this guide.</p>
+<p><em>tl;dr</em> use this command:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>  kubectl -n [namespace_name] get secret [name of your secret] -o yaml
+</code></pre></div><p>Don&rsquo;t forget to base64 decode the <code>access_key_id</code> and <code>secret_access_key</code> values before using them.</p>
+<p>You can pipe the yaml through <a href="https://github.com/ministryofjustice/cloud-platform-environments/blob/master/bin/decode.rb">this script</a> in order to decode the values, or you can do the following:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>  echo 'your_access_key_id_value' | base64 --decode
+</code></pre></div><p>Once you have your <code>access_key_id</code> and <code>secret_access_key</code>, set up an AWS profile using the AWS cli tool.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>  aws configure --profile [namespace name]
+</code></pre></div><p>You can call the profile anything you want.</p>
+<p>Supply your credentials when prompted. For region, enter <code>eu-west-2</code> This is London, which is the region all cloud platform resources are in.</p>
+<p>When prompted for <code>Default output format [None]:</code>, just press enter.</p>
+<p>Now, tell the aws command-line tool to use these credentials by running:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>export AWS_PROFILE=[profile name]
+</code></pre></div><p>Where <code>[profile name]</code> is whatever you entered for <code>--profile</code> in the <code>aws configure</code> command.</p>
+<h4 id="login-to-the-repository">Login to the repository</h4><p>The command to login to Amazon ECR is slightly different, depending on your version of the <code>aws</code> command-line tool. You can find this out by running:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>  aws --version
+</code></pre></div><p>For AWS version 1.x use the following command to login to Amazon ECR</p>
+<div class="highlight"><pre class="highlight plaintext"><code>  $(aws ecr get-login --no-include-email --region eu-west-2)
+</code></pre></div>
+<blockquote>
+<p>The output of the <code>aws ecr...</code> command is a long <code>docker login...</code> command. Including the <code>$(...)</code> around the command executes this output in the context of the current shell</p>
+</blockquote>
+<p>For AWS version 2.0, use this command:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>  aws ecr get-login-password --region eu-west-2 \
+    | docker login --username AWS --password-stdin \
+    754256621582.dkr.ecr.eu-west-2.amazonaws.com
+</code></pre></div><p>For either version of the aws cli, the output of the above should include <code>Login Succeeded</code> to confirm you have authenticated to the docker image repository.</p>
+<p>These credential are valid for 12 hours. So, if you are working through this example over a longer period, you will have to login again, e.g. the following day.</p>
+<h3 id="tag-the-image-and-push-it-to-your-ecr">Tag the image and push it to your ECR</h3><p>If you base64 decode the <code>repo_url</code> of the ECR secret in your namespace, you should get a value something like this:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>754256621582.dkr.ecr.eu-west-2.amazonaws.com/my-team/dstest-ecr
+</code></pre></div><p>We need to tag our docker image with that URL in order to push it to our ECR.</p>
+
+<blockquote>
+<p>Amazon ECR uses the terms <code>repository</code> and <code>image</code> in a rather confusing way. Normally, you would think of a docker image repository as holding multiple images, each with a different name, where each image can have multiple tags. Amazon ECR conflates the repository and image - i.e. you can only push images with the same name to a given ECR.</p>
+<p>So, you can only push an image whose name matches your ECR&rsquo;s <code>repo_url</code> value. You are free to change the tag of the image, and some teams overload the tag value as a way to store multiple completely different docker images in a single ECR.</p>
+</blockquote>
+<p>We need to tag the image you built earlier so it can be pushed to your ECR</p>
+<div class="highlight"><pre class="highlight plaintext"><code>  docker tag myimage 754256621582.dkr.ecr.eu-west-2.amazonaws.com/[team_name]/[repo_name]:1.0
+</code></pre></div><p>Replace <code>myimage</code> with whatever you chose in the <code>docker build</code> command, and use the <code>repo_url</code> value from your namespace secret.</p>
+<p>Now we can push the image to your ECR:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>docker push 754256621582.dkr.ecr.eu-west-2.amazonaws.com/[team_name]/[repo_name]:1.0
+</code></pre></div><h2 id="step-5-deploy-the-application">Step 5 - Deploy the application</h2><p>Now that we have a new docker image with our updated software, we can deploy it.</p>
+<p>Edit your <code>kubectl_deploy/deployment.yaml</code> and change the <code>image</code> from
+<code>ministryofjustice/cloud-platform-helloworld-ruby:1.1</code> to the same value you
+used in the <code>docker push</code> command above.</p>
+<p>After saving your changes, apply them to the cluster by repeating the kubectl
+apply command:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>kubectl -n [namespace name] apply -f kubectl_deploy
+</code></pre></div><p>This will cause kubernetes to launch a new pod using the new docker image, and
+then delete the old one. In a few seconds, you should see your updated web
+page.</p>
+
+<blockquote>
+<p>On a real project the process of building and tagging a new image, pushing it to the image repository and updating your deployment.yaml file is usually taken care of by a CI/CD pipeline. We&rsquo;ve worked through this whole process manually here, to show how it all fits together.</p>
+</blockquote>
+<h2 id="add-http-basic-authentication">Add HTTP Basic Authentication</h2><p>The application can be accessed from the internet at:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>https://[your domain name].apps.live-1.cloud-platform.service.justice.gov.uk
+</code></pre></div><p>As per the <a href="https://ministryofjustice.github.io/technical-guidance/documentation/standards/naming-domains.html">guidance for domain names</a>, our application should have some authentication to prevent citizens accidentally mistaking development websites for live government services. Whilst this isn&rsquo;t much of a problem with a &lsquo;hello world&rsquo; site, it could be an issue for sites using the GDS prototype kit, which look exactly like live services. So, let&rsquo;s add <a href="https://en.wikipedia.org/wiki/Basic_access_authentication">http basic authentication</a> to our application.</p>
+<p>We can do this by amending our <a href="https://kubernetes.io/docs/concepts/services-networking/ingress/">Ingress</a>, which is the kubernetes object that routes traffic to our application from the internet. We&rsquo;ll create an encrypted username and password, and then store that in a <a href="https://kubernetes.io/docs/concepts/configuration/secret/">kubernetes secret</a>. Then, we will update our Ingress to use basic authentication, and tell it where to find the credentials.</p>
+<h3 id="create-the-username-and-password">Create the username and password</h3><p>First we&rsquo;ll use the <a href="https://httpd.apache.org/docs/2.4/programs/htpasswd.html">htpasswd</a> program to create a one-way hashed username and password. htpasswd is a system program which should be pre-installed on your computer.</p>
+<p>To create a username &lsquo;bob&rsquo; with password &lsquo;password123&rsquo; in a file called &lsquo;auth&rsquo;, run the following command:</p>
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span>htpasswd <span class="nt">-cb</span> auth bob password123
+</code></pre></div><p>Whatever value you use for your password (which should <em>not</em> be &lsquo;password123&rsquo; be sure to make a note of it now - it will not be visible again.</p>
+<p>Kubernetes secrets are stored as base64-encoded text strings, so we need to run the &lsquo;auth&rsquo; file through base64 (which should also be pre-installed):</p>
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span><span class="nb">cat </span>auth | <span class="nb">base64</span>
+</code></pre></div><p>This will output the string we need to store in our secret. For the purpose of this tutorial, I&rsquo;m going to use <code>Ym9iOiRhcHIxJFVXQ1cxWDlvJGt3WDdoMTFZemNYdmVseHE2UFV2VzAK</code> Please substitute the value you got from the step above, using your own choice of username and password.</p>
+<p>Note: only the hash of the password is stored in this string, not the password itself, so it is safe to store this string in a public github repository.</p>
+<p>You can now delete the &lsquo;auth&rsquo; file - we don&rsquo;t need it anymore.</p>
+<h3 id="create-the-kubernetes-secret">Create the kubernetes secret</h3><p>Create a file called <code>kubectl_deploy/secret.yaml</code> containing the following:</p>
+<div class="highlight"><pre class="highlight yaml"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Secret</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">basic-auth</span>
+<span class="na">data</span><span class="pi">:</span>
+  <span class="na">auth</span><span class="pi">:</span> <span class="s">Ym9iOiRhcHIxJFVXQ1cxWDlvJGt3WDdoMTFZemNYdmVseHE2UFV2VzAK</span>
+</code></pre></div><p>Remember to substitute your base64-encoded credentials string.</p>
+<p>The next time we apply our yaml files to our namespace, this file will create a kubernetes secret called &lsquo;basic-auth&rsquo;. Now we need to configure our Ingress to use it.</p>
+<h3 id="configure-the-ingress">Configure the Ingress</h3><p>To configure our ingress to use basic authentication, we just need to add a couple of lines to the metadata section of <code>kubectl_deploy/ingress.yaml</code></p>
+<p>Replace this:</p>
+<div class="highlight"><pre class="highlight yaml"><code><span class="nn">...</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">helloworld-rubyapp-ingress</span>
+  <span class="na">annotations</span><span class="pi">:</span>
+    <span class="s">kubernetes.io/ingress.class</span><span class="pi">:</span> <span class="s">mynamespace</span>
+<span class="na">spec</span><span class="pi">:</span>
+<span class="nn">...</span>
+</code></pre></div><p>&hellip;with this:</p>
+<div class="highlight"><pre class="highlight yaml"><code><span class="nn">...</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">helloworld-rubyapp-ingress</span>
+  <span class="na">annotations</span><span class="pi">:</span>
+    <span class="s">kubernetes.io/ingress.class</span><span class="pi">:</span> <span class="s">mynamespace</span>
+    <span class="s">nginx.ingress.kubernetes.io/auth-type</span><span class="pi">:</span> <span class="s">basic</span>
+    <span class="s">nginx.ingress.kubernetes.io/auth-secret</span><span class="pi">:</span> <span class="s">basic-auth</span>
+<span class="na">spec</span><span class="pi">:</span>
+<span class="nn">...</span>
+</code></pre></div><p>This tells the Ingress what kind of authentication to use, and which kubernetes secret contains the credentials.</p>
+<h3 id="apply-the-changes">Apply the changes</h3><p>All that remains is to apply our updated yaml files in exactly the same way as we did before, when we deployed the application:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>kubectl -n [namespace name] apply -f kubectl_deploy
+</code></pre></div><p>You should see output like this:</p>
+<div class="highlight"><pre class="highlight shell"><code>deployment.apps/helloworld-rubyapp unchanged
+ingress.networking.k8s.io/helloworld-rubyapp-ingress configured
+secret <span class="s2">"basic-auth"</span> created
+service <span class="s2">"rubyapp-service"</span> unchanged
+</code></pre></div><p>Now, if you reload the browser page showing the &lsquo;Hello world&rsquo; message from the application, you will be prompted to enter the username and password.</p>
+
+
+              <div data-module='page-expiry' data-last-reviewed-on="2020-11-28">
+    <div class='page-expiry--not-expired'>
+      This page was last reviewed on 28 August 2020.
+
+        It needs to be reviewed again on 28 November 2020
+.
+    </div>
+
+    <div class='page-expiry--expired'>
+      This page was set to be reviewed before 28 November 2020.
+      This might mean the content is out of date.
+    </div>
+  </div>
+
+          </main>
+
+          <aside>
+              <ul class="contribution-banner">
+                <li><a href="https://github.com/ministryofjustice/cloud-platform-user-guide/blob/main/source/documentation/deploying-an-app/helloworld-app-deploy.html.md.erb">View source</a></li>
+                <li><a href="https://github.com/ministryofjustice/cloud-platform-user-guide/issues/new?labels=bug&amp;title=Re:%20'Deploying%20a%20'Hello%20World'%20application%20to%20the%20Cloud%20Platform'&amp;body=Problem%20with%20'Deploying%20a%20'Hello%20World'%20application%20to%20the%20Cloud%20Platform'%20(https://user-guide.cloud-platform.service.justice.gov.uk/documentation/deploying-an-app/helloworld-app-deploy.html)">Report problem</a></li>
+                <li><a href="https://github.com/ministryofjustice/cloud-platform-user-guide">GitHub Repo</a></li>
+              </ul>
+          </aside>
+
+          <footer class="govuk-footer app-footer" role="contentinfo">
+  <div class="govuk-footer__meta">
+    <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+
+
+      <svg
+        aria-hidden="true"
+        focusable="false"
+        class="govuk-footer__licence-logo"
+        xmlns="http://www.w3.org/2000/svg"
+        viewbox="0 0 483.2 195.7"
+        height="17"
+        width="41"
+      >
+        <path
+          fill="currentColor"
+          d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145"
+        />
+      </svg>
+      <span class="govuk-footer__licence-description">
+        All content is available under the
+        <a
+          class="govuk-footer__link"
+          href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+          rel="license"
+        >Open Government Licence v3.0</a>, except where otherwise stated
+      </span>
+    </div>
+    <div class="govuk-footer__meta-item">
+      <a
+        class="govuk-footer__link govuk-footer__copyright-logo"
+        href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
+      >© Crown copyright</a>
+    </div>
+  </div>
+</footer>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <script src="/javascripts/application.js"></script>
+  </body>
+</html>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-138188246-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-138188246-1');
+</script>
+
+<script>
+  // Add the current window.location to the body of the
+  // feedback email message.
+  function sendFeedback(mailto, event) {
+    event.preventDefault();
+
+    var body = "Feedback/Problem on page: " + window.location + "\n";
+    var href = mailto + '&body=' + encodeURIComponent(body);
+
+    window.location = href;
+  }
+
+  $(document).ready(function() {
+    var feedbackLink = $('a[href^="mailto:"]:contains("Feedback")')[0];
+    var mailto = feedbackLink.href;
+    $(feedbackLink).on('click', function(event) { sendFeedback(mailto, event); });
+  });
+</script>
